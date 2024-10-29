@@ -68,4 +68,7 @@ dependencies {
 
     implementation(libs.lottie)
     implementation(libs.material)
+    // add dependensi retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
 }

@@ -48,6 +48,7 @@
         android:layout_height="match_parent"
         android:padding="16dp"
         android:textSize="16sp"
+        android:lineHeight="25sp"
         android:fontFamily="@font/public_sans_regular"
         android:background="@drawable/border_edit_text"
         />
