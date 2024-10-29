@@ -22,11 +22,17 @@ android {
 
     buildTypes {
         release {
+            buildConfigField("String", "AVD_BASE_URL", "\"${project.properties["AVD_BASE_URL"]}\"")
+            buildConfigField("String", "PHYSICAL_DEVICE_BASE_URL", "\"${project.properties["PHYSICAL_DEVICE_BASE_URL"]}\"")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+        debug {
+            buildConfigField("String", "AVD_BASE_URL", "\"${project.properties["AVD_BASE_URL"]}\"")
+            buildConfigField("String", "PHYSICAL_DEVICE_BASE_URL", "\"${project.properties["PHYSICAL_DEVICE_BASE_URL"]}\"")
         }
     }
     compileOptions {
@@ -38,6 +44,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -66,7 +73,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    implementation(libs.lottie)
     implementation(libs.material)
     // add dependensi retrofit
     implementation(libs.retrofit)
