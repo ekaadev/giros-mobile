@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SupportCreator">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="210dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="32dp"
+            android:contentDescription="@string/title_support"
+            android:src="@drawable/bing_generated_qrcode"
+            android:background="@drawable/border_qr_code"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"/>
+
+        <Button
+            android:id="@+id/trakteerButton"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/trakteer_saya"
+            android:text="@string/title_support"
+            android:textColor="@color/black"
+            android:textAllCaps="false"
+            android:background="@drawable/border_button"/>
+    </LinearLayout>
+</FrameLayout>

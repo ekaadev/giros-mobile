@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.Giros" parent="Theme.MaterialComponents.Light.DarkActionBar" />
+    <style name="Theme.Giros" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="android:statusBarColor">@color/white</item>
+    </style>
+
+    <style name="Theme.Navigation" parent="Theme.Giros">
+        <item name="colorControlHighlight">@android:color/white</item>
+    </style>
 </resources>

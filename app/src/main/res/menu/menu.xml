@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ShowIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/github_roasting"
+            android:icon="@drawable/baseline_theater_comedy_24"
+            android:title="@string/title_github"
+            android:checked="true"
+
+            />
+
+        <item
+            android:id="@+id/support_creator"
+            android:icon="@drawable/support_creator_24"
+            android:title="@string/title_support"
+            />
+
+    </group>
+
+</menu>

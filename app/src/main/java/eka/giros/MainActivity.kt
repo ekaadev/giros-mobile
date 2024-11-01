@@ -1,92 +1,69 @@
 package eka.giros
 
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import androidx.activity.ComponentActivity
+import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
-import eka.giros.model.UserRequest
-import eka.giros.model.UserResponse
-import eka.giros.repository.RetrofitClient
-import eka.giros.repository.UserRepository
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.appcompat.widget.Toolbar
+import com.google.android.material.navigation.NavigationView
+import androidx.core.view.GravityCompat
 
-class MainActivity : ComponentActivity() {
-    private lateinit var userRepository: UserRepository
-
-    private lateinit var usernameButton: Button
-    private lateinit var usernameEditText: EditText
-    private lateinit var resultRoastingTextView: TextView
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navigationView: NavigationView
+    private lateinit var toolbar: Toolbar
 
     // init component
     private fun initComponent() {
-        usernameButton = findViewById(R.id.usernameButton)
-        usernameEditText = findViewById(R.id.usernameEditText)
-        resultRoastingTextView = findViewById(R.id.resultRoastingTextView)
+        toolbar = findViewById(R.id.toolbar)
+        drawerLayout = findViewById(R.id.drawer_layout)
+        navigationView = findViewById(R.id.nav_view)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
         enableEdgeToEdge()
-        setContentView(R.layout.github)
-
         initComponent()
+        setSupportActionBar(toolbar)
+        navigationView.setNavigationItemSelectedListener(this)
 
+        val toggle = ActionBarDrawerToggle(
+            this,
+            drawerLayout,
+            toolbar,
+            R.string.open_drawer,
+            R.string.closed_drawer
+        )
 
+        toggle.drawerArrowDrawable.color = resources.getColor(R.color.main, theme)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
 
-        // init user repository
-        userRepository = UserRepository(RetrofitClient.instance)
-
-        // action if click on button
-        usernameButton.setOnClickListener {
-            resultRoastingTextView.text = resources.getString(R.string.loadingResult)
-            usernameButton.isEnabled = false
-            usernameButton.text = resources.getString(R.string.loadingText)
-
-            // receive data from client
-            val usernameGithub = usernameEditText.text.toString()
-
-            if (usernameGithub.isEmpty()) {
-                resultRoastingTextView.text = resources.getString(R.string.usernameEmpty)
-                usernameButton.isEnabled = true
-                return@setOnClickListener
-            }
-
-            // data yang akan dipost
-            val requestBody = UserRequest(
-                model = "gemini",
-                language = "auto"
-            )
-
-            userRepository.createRoasting(usernameGithub, requestBody).enqueue(object: Callback<UserResponse> {
-                override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
-                    if (response.isSuccessful) {
-                        val userResponse = response.body()
-                        if (userResponse != null) {
-                            resultRoastingTextView.text = userResponse.roasting
-                        }
-                        Log.i("MainActivity", "Roasting: $userResponse")
-                    } else {
-                        resultRoastingTextView.text = response.toString()
-                        Log.i("MainActivity", "Failed: ${response.errorBody()}")
-                    }
-
-                    usernameButton.isEnabled = true
-                    usernameButton.text = resources.getString(R.string.usernameButton)
-                }
-
-                override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-                    resultRoastingTextView.text = t.message.toString()
-                    Log.e("MainActivity", "Error: ${t.message}")
-
-                    usernameButton.isEnabled = true
-                    usernameButton.text = resources.getString(R.string.usernameButton)
-                }
-            })
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction().replace(R.id.FrameLayout, GithubRoasting()).commit()
+            navigationView.setCheckedItem(R.id.github_roasting)
         }
     }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.github_roasting) {
+            supportFragmentManager.beginTransaction().replace(R.id.FrameLayout, GithubRoasting()).commit()
+        } else if (item.itemId == R.id.support_creator) {
+            supportFragmentManager.beginTransaction().replace(R.id.FrameLayout, SupportCreator()).commit()
+        }
+        drawerLayout.closeDrawer(GravityCompat.START)
+        return true
+    }
+
+    override fun onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
+    }
+
 }
