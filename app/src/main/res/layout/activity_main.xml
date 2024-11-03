@@ -40,7 +40,7 @@
         app:menu="@menu/menu"
         app:headerLayout="@layout/nav_header"
         app:itemBackground="@drawable/item_background_nav"
-        android:background="drawable/background_nav"
+        android:background="@drawable/background_nav"
         />
 
 </androidx.drawerlayout.widget.DrawerLayout>
