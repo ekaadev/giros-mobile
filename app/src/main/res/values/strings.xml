@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Giros</string>
-    <string name="usernameEditText">Username</string>
+    <string name="usernameEditText">Username Github</string>
     <string name="usernameButton">Submit</string>
     <string name="loadingText">Loading…</string>
     <string name="resultRoastingTextView">Result</string>
@@ -14,4 +14,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="trakteer_saya">Trakteer Saya</string>
+
+    <!-- Alert -->
+    <string name="titleAlertTextView">Alert</string>
+    <string name="alertRoastingTextView">
+        Please prepare yourself mentally as the words used may be offensive.
+    </string>
 </resources>

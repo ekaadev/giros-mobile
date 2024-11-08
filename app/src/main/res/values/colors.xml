@@ -9,4 +9,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="trakteer">#bf1e2e</color>
+    <!--  -->
+    <color name="alert">#ff6b6b</color>
 </resources>
