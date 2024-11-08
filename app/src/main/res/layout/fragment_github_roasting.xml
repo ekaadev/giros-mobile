@@ -5,77 +5,78 @@
     android:layout_height="match_parent"
     tools:context=".GithubRoasting">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fillViewport="true"
         tools:ignore="UselessParent">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
             android:orientation="vertical"
-            android:padding="16dp"
-            android:background="@drawable/background_alert">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/titleAlertTextView"
-                android:textColor="@color/black"
-                android:fontFamily="@font/public_sans_bold"
-                android:textSize="16sp"
-                android:layout_marginBottom="4dp"
-                />
+                android:layout_marginBottom="32dp"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@drawable/background_alert">
 
-            <TextView
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/titleAlertTextView"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/public_sans_bold"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="4dp"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/alertRoastingTextView"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/public_sans_regular"
+                    />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/usernameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/alertRoastingTextView"
+                android:importantForAutofill="no"
+                android:hint="@string/usernameEditText"
+                android:inputType="text"
+                android:padding="16dp"
+                android:layout_marginBottom="32dp"
+                android:textSize="14sp"
+                android:fontFamily="@font/public_sans_regular"
+                android:textColorHint="@color/gray"
+                android:background="@drawable/border_edit_text"/>
+
+            <Button
+                android:id="@+id/usernameButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/usernameButton"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                android:padding="16dp"
+                android:layout_marginBottom="32dp"
+                android:fontFamily="@font/public_sans_regular"
+                android:background="@drawable/border_button" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/resultRoastingTextView"
                 android:textColor="@color/black"
                 android:fontFamily="@font/public_sans_regular"
                 />
-        </LinearLayout>
-
-        <EditText
-            android:id="@+id/usernameEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:importantForAutofill="no"
-            android:hint="@string/usernameEditText"
-            android:inputType="text"
-            android:padding="16dp"
-            android:layout_marginBottom="32dp"
-            android:textSize="14sp"
-            android:fontFamily="@font/public_sans_regular"
-            android:textColorHint="@color/gray"
-            android:background="@drawable/border_edit_text"/>
-
-        <Button
-            android:id="@+id/usernameButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/usernameButton"
-            android:textAllCaps="false"
-            android:textSize="14sp"
-            android:padding="16dp"
-            android:layout_marginBottom="32dp"
-            android:fontFamily="@font/public_sans_regular"
-            android:background="@drawable/border_button" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="@string/resultRoastingTextView"
-            android:textColor="@color/black"
-            android:fontFamily="@font/public_sans_regular"
-            />
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/resultRoastingTextView"
@@ -87,8 +88,7 @@
                 android:fontFamily="@font/public_sans_regular"
                 android:background="@drawable/border_edit_text" />
 
-        </ScrollView>
-
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>
