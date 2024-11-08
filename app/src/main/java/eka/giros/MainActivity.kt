@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         enableEdgeToEdge()
         initComponent()
         setSupportActionBar(toolbar)
@@ -40,7 +39,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.string.closed_drawer
         )
 
-        toggle.drawerArrowDrawable.color = resources.getColor(R.color.main, theme)
+        toggle.drawerArrowDrawable.color = resources.getColor(R.color.black, theme)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
