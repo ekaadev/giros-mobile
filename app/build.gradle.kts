@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -18,21 +20,20 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        val properties = Properties()
+        properties.load(project.rootProject.file("local.properties").inputStream())
+
+        buildConfigField("String", "BASE_URL", "\"${properties.getProperty("BASE_URL")}\"")
     }
 
     buildTypes {
         release {
-            buildConfigField("String", "AVD_BASE_URL", "\"${project.properties["AVD_BASE_URL"]}\"")
-            buildConfigField("String", "PHYSICAL_DEVICE_BASE_URL", "\"${project.properties["PHYSICAL_DEVICE_BASE_URL"]}\"")
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-        }
-        debug {
-            buildConfigField("String", "AVD_BASE_URL", "\"${project.properties["AVD_BASE_URL"]}\"")
-            buildConfigField("String", "PHYSICAL_DEVICE_BASE_URL", "\"${project.properties["PHYSICAL_DEVICE_BASE_URL"]}\"")
         }
     }
     compileOptions {

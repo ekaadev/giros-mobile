@@ -9,7 +9,7 @@ import retrofit2.http.Query
 
 interface ApiService {
 
-    @POST("roasting")
+    @POST("roast")
     fun createRoasting(
         @Query("username") username: String,
         @Body requestBody: UserRequest
