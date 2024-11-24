@@ -1,6 +1,7 @@
 [versions]
 agp = "8.6.1"
 converterGson = "2.9.0"
+coreSplashscreen = "1.0.1"
 dotenvKotlin = "6.4.1"
 glide = "4.12.0"
 kotlin = "1.9.0"
@@ -17,6 +18,7 @@ retrofit = "2.9.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
 dotenv-kotlin = { module = "io.github.cdimascio:dotenv-kotlin", version = "6.4.2" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
