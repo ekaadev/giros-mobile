@@ -2,7 +2,7 @@
 <resources>
     <style name="Theme.Giros.MySplash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/black</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/news_avd_v02</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/giros_logo</item>
         <item name="postSplashScreenTheme">@style/Theme.Giros</item>
     </style>
 </resources>
