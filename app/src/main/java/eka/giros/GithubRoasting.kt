@@ -13,6 +13,7 @@ import eka.giros.model.UserRequest
 import eka.giros.model.UserResponse
 import eka.giros.repository.UserRepository
 import eka.giros.repository.RetrofitClient
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -68,8 +69,19 @@ class GithubRoasting : Fragment() {
                     resultRoastingTextView.text = response.body()?.roasting ?: "No roasting found"
                     Log.i("GithubRoasting", "Roasting: ${response.body()}")
                 } else {
-                    resultRoastingTextView.text = response.toString()
-                    Log.i("GithubRoasting", "Failed: ${response.errorBody()}")
+                    val errorMessage = response.errorBody()?.string()
+                    val errorJson = try {
+                        if (errorMessage != null) {
+                            JSONObject(errorMessage).getString("error")
+                        } else {
+                            "Unknown error"
+                        }
+                    } catch (e: Exception) {
+                        "Unknown error"
+                    }
+
+                    resultRoastingTextView.text = errorJson
+                    Log.i("GithubRoasting", "Failed: $errorJson")
                 }
                 usernameButton.isEnabled = true
                 usernameButton.text = resources.getString(R.string.usernameButton)
