@@ -17,6 +17,7 @@ import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import eka.giros.Helper
 
 class GithubRoasting : Fragment() {
 
@@ -55,6 +56,13 @@ class GithubRoasting : Fragment() {
         if (usernameGithub.isEmpty()) {
             resultRoastingTextView.text = resources.getString(R.string.usernameEmpty)
             usernameButton.isEnabled = true
+            return
+        }
+
+        if (!Helper.isNetworkConnected(requireContext())) {
+            resultRoastingTextView.text = resources.getString(R.string.noInternet)
+            usernameButton.isEnabled = true
+            usernameButton.text = resources.getString(R.string.usernameButton)
             return
         }
 
